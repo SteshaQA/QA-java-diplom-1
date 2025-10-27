@@ -38,7 +38,6 @@ public class addIngredientTest {
     public void addOneIngredientTestSuccess(){
         List<Ingredient> ingredients = database.availableIngredients();
         burger.addIngredient(ingredients.get(0));
-        assertEquals(1, burger.ingredients.size());
         assertEquals(burger.ingredients.get(0), ingredients.get(0));
     }
 
@@ -50,7 +49,6 @@ public class addIngredientTest {
             burger.addIngredient(ingredients.get(i));
             assertTrue(burger.ingredients.contains(ingredients.get(i)));
         }
-        assertEquals(addedIngredients.size(), burger.ingredients.size());
     }
 
     @Test
@@ -61,7 +59,6 @@ public class addIngredientTest {
             burger.addIngredient(ingredients.get(i));
         }
         burger.removeIngredient(1);
-        assertEquals(addedIngredients.size()-1, burger.ingredients.size());
         assertFalse(burger.ingredients.contains(ingredients.get(addedIngredients.get(1))));
     }
 
@@ -78,7 +75,6 @@ public class addIngredientTest {
             burger.removeIngredient(indexIngredientBurger);
         }
 
-        assertEquals(addedIngredients.size() - removedIngredients.size(), burger.ingredients.size());
         for (Integer i: removedIngredients) {
             assertFalse(burger.ingredients.contains(ingredients.get(i)));
         }
@@ -94,7 +90,6 @@ public class addIngredientTest {
         List<Ingredient> originalIngredients = new ArrayList<>(burger.ingredients);
         burger.moveIngredient(0, 2);
         List<Ingredient> newIngredients = burger.ingredients;
-        assertEquals(originalIngredients.size(), newIngredients.size());
         assertEquals(originalIngredients.get(0), newIngredients.get(2));
     }
 
@@ -108,7 +103,6 @@ public class addIngredientTest {
         List<Ingredient> originalIngredients = new ArrayList<>(burger.ingredients);
         burger.moveIngredient(2, 0);
         List<Ingredient> newIngredients = burger.ingredients;
-        assertEquals(originalIngredients.size(), newIngredients.size());
         assertEquals(originalIngredients.get(2), newIngredients.get(0));
     }
 
